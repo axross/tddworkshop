@@ -1,0 +1,40 @@
+{
+  "name": "tddworkshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yusuke Yasuda",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.2.3",
+    "browserify": "^9.0.3",
+    "espower-loader": "^0.10.0",
+    "gulp": "^3.8.11",
+    "gulp-compass": "^2.0.3",
+    "gulp-espower": "^0.10.1",
+    "gulp-filter": "^2.0.2",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "i": "^0.3.2",
+    "intercept-stdout": "0.0.3",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-browserify": "^4.0.0",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5",
+    "karma-osx-reporter": "^0.2.0",
+    "karma-spec-json-reporter": "0.0.8",
+    "karma-spec-reporter": "0.0.16",
+    "mocha": "^2.2.1",
+    "npm": "^2.7.1",
+    "power-assert": "^0.10.2",
+    "vinyl-transform": "^1.0.0"
+  },
+  "dependencies": {
+    "connect": "^3.3.4",
+    "serve-static": "^1.9.2"
+  }
+}
