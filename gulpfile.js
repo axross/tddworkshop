@@ -8,9 +8,10 @@ var browserSync     = require('browser-sync');
 var reload          = browserSync.reload;
 var karma           = require('karma').server;
 var mocha           = require('gulp-mocha');
-var espower         = require('gulp-espower');
 var intercept       = require("intercept-stdout");
 var fs              = require('fs');
+
+require('intelli-espower-loader');
 
 gulp.task('browserify', function () {
     var browserified = transform(function(filename) {
@@ -63,12 +64,12 @@ gulp.task('tdd', function (done) {
 });
 
 gulp.task('mocha', function () {
-    return gulp.src('src/**/*.mocha.js', {read: false})
-        .pipe(espower())
+    return gulp.src('src/**/*.mocha.js')
         .pipe(mocha({reporter: 'spec'}));
 });
 
 gulp.task('mocha-tdd', function () {
+    gulp.run('mocha');
     gulp.watch('./src/**/*.js', ['mocha']);
 });
 
@@ -77,8 +78,7 @@ gulp.task('mocha-result', function () {
     var unhook_intercept = intercept(function(txt) {
         ws.write(txt);
     });
-    return gulp.src('src/**/*.mocha.js', {read: false})
-        .pipe(espower())
+    return gulp.src('src/**/*.mocha.js')
         .pipe(mocha({reporter: 'json'})).on('end', function() {
             ws.end();
             unhook_intercept();

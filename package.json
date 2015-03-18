@@ -14,11 +14,11 @@
     "espower-loader": "^0.10.0",
     "gulp": "^3.8.11",
     "gulp-compass": "^2.0.3",
-    "gulp-espower": "^0.10.1",
     "gulp-filter": "^2.0.2",
     "gulp-mocha": "^2.0.0",
     "gulp-plumber": "^1.0.0",
     "i": "^0.3.2",
+    "intelli-espower-loader": "^0.6.0",
     "intercept-stdout": "0.0.3",
     "jasmine-core": "^2.2.0",
     "karma": "^0.12.31",
@@ -36,5 +36,8 @@
   "dependencies": {
     "connect": "^3.3.4",
     "serve-static": "^1.9.2"
+  },
+  "directories": {
+    "test": "src/"
   }
 }
