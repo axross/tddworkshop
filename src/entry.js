@@ -31,7 +31,7 @@ var todoListView = new View('todolist');
 
 todoListView.delegate('change', '.test-status', function changeStatus(event) {
     var model = todoListCollection.findById(event.target.dataset.id);
-    model.set({isPassed: false});
+    model.set({isPassed: event.target.checked});
 });
 
 todoListCollection.on('change', function(event) {
