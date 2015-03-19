@@ -25,7 +25,7 @@ describe('testSummary', function() {
     it('testSummary', function() {
         assert.deepEqual(testSummary(data), ul({}, [
             summaryItem('failures', 3),
-            summaryItem('passed', 7),
+            summaryItem('passes', 7),
             summaryItem('tests', 10),
             summaryItem('suites', 3)
         ]));

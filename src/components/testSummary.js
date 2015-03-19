@@ -9,7 +9,7 @@ var ul = createElement('ul');
 function testSummary(list) {
     return ul({}, [
         summaryItem('failures', summaryUtil.failedNumber(list)),
-        summaryItem('passed', summaryUtil.passedNumber(list)),
+        summaryItem('passes', summaryUtil.passedNumber(list)),
         summaryItem('tests', summaryUtil.testNumber(list)),
         summaryItem('suites', summaryUtil.suiteNumber(list))
     ]);
