@@ -2,6 +2,7 @@
 
 var Collection = require('./collection');
 var View = require('./view');
+var testSummary = require('./components/testSummary');
 var todoList = require('./components/todoList');
 
 var testResult = require('../result/mocha.json');
@@ -26,6 +27,14 @@ function withPassed(isPassed) {
 }
 
 var todoListCollection = new Collection(tests);
+
+
+var testSummaryView = new View('testSummary');
+todoListCollection.on('change', function(event) {
+    testSummaryView.render(testSummary(event.target.toJSON()));
+});
+testSummaryView.render(testSummary(todoListCollection.toJSON()));
+
 
 var todoListView = new View('todolist');
 
