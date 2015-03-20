@@ -12,7 +12,6 @@
             </div>
         </header>
         <div class="content">
-            <h2>ToDo</h2>
             <div class="todo-list-header row">
                 <div class="header-item list-item c1">pass</div>
                 <div class="header-item list-item c3">suite</div>
@@ -20,7 +19,26 @@
             </div>
             <div id="todolist"></div>
         </div>
-        <footer></footer>
+        <footer class="footer">
+            <form id="todoForm" class="todo-form">
+                <div class="row form-header">
+                    <div class="c3">suite</div>
+                    <div class="c8">test title</div>
+                    <div class="c1"></div>
+                </div>
+                <div class="row">
+                    <div class="c3">
+                        <input class="input-suite" type="text">
+                    </div>
+                    <div class="c8">
+                        <textarea class="input-title"></textarea>
+                    </div>
+                    <div class="c1 button-container ">
+                        <a class="button create">create</a>
+                    </div>
+                </div>
+            </form>
+        </footer>
         <script src="./js/entry.js" type="text/javascript"></script>
     </body>
 </html>

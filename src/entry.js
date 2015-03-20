@@ -43,6 +43,21 @@ todoListView.delegate('change', '.test-status', function changeStatus(event) {
     model.set({isPassed: event.target.checked});
 });
 
+todoListView.delegate('click', '.button.delete', function deleteItem(event) {
+    var model = todoListCollection.findById(event.target.dataset.id);
+    todoListCollection.remove(model);
+});
+
+var todoFormView = new View('todoForm');
+todoFormView.delegate('click', '.button.create', function(e) {
+    var suite = todoFormView.$elm.querySelector('.input-suite').value;
+    var title = todoFormView.$elm.querySelector('.input-title').value;
+    if (suite.length && title.length) {
+        todoListCollection.add({title: title, tags: [suite], isPassed: false});
+    }
+});
+
+
 todoListCollection.on('change', function(event) {
     todoListView.render(todoList(event.target.toJSON()));
 });
