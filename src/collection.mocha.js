@@ -55,6 +55,76 @@ describe('Collection', function() {
         }
     });
 
+    it('collection.length()', function() {
+        var data = [
+            {text: 'one'},
+            {text: 'two'},
+            {text: 'three'}
+        ];
+        var collection = new Collection(data);
+        assert(collection.length() === 3);
+    });
+
+    it('collection.remove(model)', function() {
+        var data = [
+            {text: 'one', id: 'one'},
+            {text: 'two', id: 'two'},
+            {text: 'three', id:'three'}
+        ];
+        var collection = new Collection(data);
+
+        var model1 = collection.findById('one');
+        var model2 = collection.findById('two');
+        var model3 = collection.findById('three');
+        var removed;
+        collection.on('change', function onRemoveModel(event) {
+            if (event.action === 'REMOVE') {
+                assert(event.changed === removed);
+            } else {
+                assert.fail('', '', 'collection must not subscribe removed models');
+            }
+        });
+        
+        removed = model1;
+        collection.remove(model1);
+        assert(collection.length() === 2);
+        assert(collection.at(0) === model2);
+        model1.set({text: 'removed'});
+
+        removed = model2;
+        collection.remove(model2);
+        assert(collection.length() === 1);
+        assert(collection.at(0) === model3);
+        model2.set({text: 'removed'});
+
+        removed = model3;
+        collection.remove(model3);
+        assert(collection.length() === 0);
+        model3.set({text: 'removed'});
+    });
+
+    it('collection.add(data)', function() {
+        var collection = new Collection();
+        var addedData;
+        collection.on('change', function(event) {
+            assert(event.action === 'ADD');
+            assert.deepEqual(event.changed.toJSON(), addedData);
+        });
+        assert(collection.length() === 0);
+
+        addedData = {text: 'one', id: 'one'};
+        collection.add(addedData);
+        assert(collection.length() === 1);
+
+        addedData = {text: 'two', id: 'two'};
+        collection.add(addedData);
+        assert(collection.length() === 2);
+
+        addedData = {text: 'three', id: 'three'};
+        collection.add(addedData);
+        assert(collection.length() === 3);
+    });
+
     it('collectionはModelのchangeイベントを購読する', function() {
         var data = [
             {text: 'one'},
