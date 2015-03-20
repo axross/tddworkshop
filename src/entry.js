@@ -9,7 +9,7 @@ var testResult = require('../result/mocha.json');
 var tests = testResult.passes.map(withPassed(true))
     .concat(testResult.failures.map(withPassed(false)))
     .map(function(item, index) {
-        item.id = 'test' + index;
+        item.id = (new Buffer(item.title)).toString('base64');
         return item;
     })
     .map(function(item) {
@@ -53,7 +53,7 @@ todoFormView.delegate('click', '.button.create', function(e) {
     var suite = todoFormView.$elm.querySelector('.input-suite').value;
     var title = todoFormView.$elm.querySelector('.input-title').value;
     if (suite.length && title.length) {
-        todoListCollection.add({title: title, tags: [suite], isPassed: false});
+        todoListCollection.add({title: title, id: (new Buffer(title)).toString('base64'), tags: [suite], isPassed: false});
     }
 });
 
