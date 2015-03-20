@@ -1,6 +1,5 @@
 'use strict';
 
-var assert = require('power-assert');
 var todoItem = require('./todoItem');
 var createElement = require('../vdom/createElement');
 
@@ -19,7 +18,7 @@ describe('todoItem', function() {
             isPassed: true,
             tags: ['todoItem']
         });
-        assert.deepEqual(tree, li({class: 'todo-item list-item row'}, [
+        expect(tree).toEqual(li({class: 'todo-item list-item row'}, [
             div({class: 'pass c1'}, [input({'data-id': 'test0', class: 'test-status', type: 'checkbox', value: true, checked: 'checked'})]),
             div({class: 'suite c3'}, [span({}, 'todoItem')]),
             h2({class: 'c7'}, 'todoItem(item)'),
@@ -36,7 +35,7 @@ describe('todoItem', function() {
             isPassed: false,
             tags: ['todoItem']
         });
-        assert.deepEqual(tree, li({class: 'todo-item list-item row'}, [
+        expect(tree).toEqual(li({class: 'todo-item list-item row'}, [
             div({class: 'pass c1'}, [input({'data-id': 'test0', class: 'test-status', type: 'checkbox', value: false})]),
             div({class: 'suite c3'}, [span({}, 'todoItem')]),
             h2({class: 'c7'}, 'todoItem(item)'),

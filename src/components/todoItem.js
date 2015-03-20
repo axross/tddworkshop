@@ -7,6 +7,7 @@ var div = createElement('div');
 var span = createElement('span');
 var h2 = createElement('h2');
 var input = createElement('input');
+var a = createElement('a');
 
 var todoItem = function(item) {
     var checkbox = {'data-id': item.id, class: 'test-status', type: 'checkbox', value: item.isPassed};
@@ -18,7 +19,10 @@ var todoItem = function(item) {
         div({class: 'suite c3'}, item.tags.map(function(t) {
             return span({}, t);
         })),
-        h2({class: 'c8'}, item.title)
+        h2({class: 'c7'}, item.title),
+        div({class: 'c1 button-container'}, [
+            a({class: 'button delete', 'data-id': item.id}, '×')
+        ])
     ]);
 };
 
