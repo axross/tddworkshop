@@ -2,13 +2,17 @@
   "name": "tddworkshop",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/entry.js",
   "scripts": {
     "test": "$(npm bin)/gulp test && $(npm bin)/gulp mocha",
     "build": "npm install && $(npm bin)/gulp compass; $(npm bin)/gulp mocha-result && $(npm bin)/gulp browserify"
   },
   "author": "Yusuke Yasuda",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:TanUkkii007/tddworkshop.git"
+  },
   "devDependencies": {
     "browser-sync": "^2.2.3",
     "browserify": "^9.0.3",
