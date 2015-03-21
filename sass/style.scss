@@ -1,0 +1,126 @@
+@charset "UTF-8";
+@import "variables";
+@import "compass/reset";
+@import "compass/css3/box";
+@import "compass/css3/box-sizing";
+@import "compass/css3/border-radius";
+
+.row {
+    @include display-box;
+    width: 100%;
+}
+@for $i from 1 through 12 {
+    .c#{$i} {
+        width: $i / 12 * 100%;
+        @include box-sizing(border-box);
+    }
+}
+
+.header {
+    width: 100%;
+    background-color: $primary;
+}
+
+.title {
+    color: $white;
+    font-size: $text-large;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.test-summary {
+    overflow: hidden;
+    .summary {
+        float: right;
+        text-align: center;
+        width: 120px;
+        color: $white;
+        padding: 10px;
+        &.suites {
+            background-color: $info;
+        }
+        &.tests {
+            background-color: $warning;
+        }
+        &.passes {
+            background-color: $success;
+        }
+        &.failures {
+            background-color: $danger;
+        }
+    }
+}
+
+.list-item {
+    padding: 10px 0;
+}
+
+.todo-list-header {
+    .header-item {
+        text-align: center;
+    }
+}
+
+.todo-item {
+    &:nth-child(2n) {
+        background-color: $light-gray;
+    }
+    .pass {
+        text-align: center;
+    }
+    .suite {
+        text-align: center;
+    }
+}
+
+.button-container {
+    text-align: center;
+}
+
+.button {
+    @include border-radius;
+    padding: 5px 10px;
+    color: $white;
+    &.delete {
+        background-color: $danger;
+    }
+    &.create {
+        background-color: $success;
+    }
+}
+
+.footer {
+    width: 100%;
+    background-color: $primary;
+}
+
+.todo-form {
+    width: 90%;
+    padding: 10px 20px;
+    margin: 0 auto;
+    text-align: center;
+    .form-header {
+        color: $white;
+    }
+}
+
+.input-suite {
+    width: 90%;
+    padding: 2px;
+    border: 2px solid;
+    height: 40px;
+    @include border-radius;
+}
+
+.input-title {
+    width: 90%;
+    padding: 2px;
+    border: 1px solid;
+    height: 40px;
+    @include border-radius;
+}
