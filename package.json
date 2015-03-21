@@ -17,6 +17,7 @@
     "browser-sync": "^2.2.3",
     "browserify": "^9.0.3",
     "espower-loader": "^0.10.0",
+    "expect.js": "^0.3.1",
     "gulp": "^3.8.11",
     "gulp-compass": "^2.0.3",
     "gulp-filter": "^2.0.2",
