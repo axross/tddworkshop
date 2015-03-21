@@ -26,29 +26,42 @@ function withPassed(isPassed) {
     };
 }
 
+//ToDoリストデータ一覧を管理するCollection
 var todoListCollection = new Collection(tests);
 
 
+//ToDoリストの状態を集計して表示するView
 var testSummaryView = new View('testSummary');
+//Collectionの変更をすべてtestSummaryViewに同期する
 todoListCollection.on('change', function(event) {
     testSummaryView.render(testSummary(event.target.toJSON()));
 });
+//ToDoリストの状態の初期描画
 testSummaryView.render(testSummary(todoListCollection.toJSON()));
 
-
+//ToDoリスト一覧を表示するView
 var todoListView = new View('todolist');
-
+//チェックボックスのON/OFF時の変化をModelに通知するイベントハンドラー
 todoListView.delegate('change', '.test-status', function changeStatus(event) {
     var model = todoListCollection.findById(event.target.dataset.id);
     model.set({isPassed: event.target.checked});
 });
-
+//削除ボタンが押されたときにToDoアイテムをCollectionから削除するイベントハンドラー
 todoListView.delegate('click', '.button.delete', function deleteItem(event) {
     var model = todoListCollection.findById(event.target.dataset.id);
     todoListCollection.remove(model);
 });
+//Collectionの変更をすべてtodoListViewに同期する
+todoListCollection.on('change', function(event) {
+    todoListView.render(todoList(event.target.toJSON()));
+});
+//ToDoリストの初期描画
+todoListView.render(todoList(tests));
 
+
+//ToDoアイテムを追加するフォームのView
 var todoFormView = new View('todoForm');
+//作成ボタンが押されたときにCollectionにアイテムを追加するイベントハンドラー
 todoFormView.delegate('click', '.button.create', function(e) {
     var suite = todoFormView.$elm.querySelector('.input-suite').value;
     var title = todoFormView.$elm.querySelector('.input-title').value;
@@ -56,10 +69,3 @@ todoFormView.delegate('click', '.button.create', function(e) {
         todoListCollection.add({title: title, id: (new Buffer(title)).toString('base64'), tags: [suite], isPassed: false});
     }
 });
-
-
-todoListCollection.on('change', function(event) {
-    todoListView.render(todoList(event.target.toJSON()));
-});
-
-todoListView.render(todoList(tests));
