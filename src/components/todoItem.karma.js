@@ -11,7 +11,7 @@ describe('todoItem', function() {
     var input = createElement('input');
     var a = createElement('a');
 
-    it('todoItem(item): item.isPassed === true', function() {
+    it('todoItem(item): item.isPassed === trueの場合、inputはchecked="checked" value="true"となる', function() {
         var tree = todoItem({
             id: 'test0',
             title: 'todoItem(item)',
@@ -28,7 +28,7 @@ describe('todoItem', function() {
         ]));
     });
 
-    it('todoItem(item): item.isPassed === false', function() {
+    it('todoItem(item): item.isPassed === falseの場合、inputは value="false"となる', function() {
         var tree = todoItem({
             id: 'test0',
             title: 'todoItem(item)',
