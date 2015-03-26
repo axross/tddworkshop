@@ -9,7 +9,7 @@ describe('summaryItem', function() {
     var li = createElement('li');
     var span = createElement('span');
 
-    it('summaryItem', function() {
+    it('summaryItem(text, num)', function() {
         assert.deepEqual(summaryItem('suites', 16), li({class: 'summary suites'}, [
             VText('suites: '),
             span({}, '16')

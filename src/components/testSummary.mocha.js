@@ -5,6 +5,7 @@ var testSummary = require('./testSummary');
 var summaryItem = require('./summaryItem');
 var createElement = require('../vdom/createElement');
 var VText = require('../vdom/vtext');
+var summaryUtil = require('../summaryUtil');
 
 describe('testSummary', function() {
     var ul = createElement('ul');
@@ -22,12 +23,12 @@ describe('testSummary', function() {
         {title: 'test10', isPassed: true, tags: ['testC']}
     ];
 
-    it('testSummary', function() {
+    it('testSummary(data)はdataを集計してsummaryItemのリストとして表示する', function() {
         assert.deepEqual(testSummary(data), ul({}, [
-            summaryItem('failures', 3),
-            summaryItem('passes', 7),
-            summaryItem('tests', 10),
-            summaryItem('suites', 3)
+            summaryItem('failures', summaryUtil.failedNumber(data)),
+            summaryItem('passes', summaryUtil.passedNumber(data)),
+            summaryItem('tests', summaryUtil.testNumber(data)),
+            summaryItem('suites', summaryUtil.suiteNumber(data))
         ]));
     });
 });
