@@ -10,6 +10,9 @@ var karma           = require('karma').server;
 var mocha           = require('gulp-mocha');
 var intercept       = require("intercept-stdout");
 var fs              = require('fs');
+var rename = require("gulp-rename");
+var map = require('map-stream');
+var File = require('vinyl');
 
 require('intelli-espower-loader');
 
@@ -83,6 +86,22 @@ gulp.task('mocha-result', function () {
             ws.end();
             unhook_intercept();
         });
+});
+
+gulp.task('copy-answer', function () {
+    return gulp.src('src/**/*.js', {base: 'src'})
+        .pipe(filter(['*', '!*.mocha.js', '!*.karma.js', '!*.answer.js', '!view.js', '!entry.js']))
+        .pipe(rename({suffix: '.answer'}))
+        .pipe(gulp.dest('./src/'));
+});
+
+gulp.task('start-hacking', ['copy-answer'], function () {
+    return gulp.src('src/**/*.js', {base: 'src'})
+        .pipe(filter(['**/*', '!**/*.mocha.js', '!**/*.karma.js', '!**/*.answer.js', '!view.js', '!entry.js']))
+        .pipe(map(function(file, callback) {
+            callback(null, new File({path: file.path, contents: new Buffer('')}));
+        }))
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('default',['browser-sync'], function() {

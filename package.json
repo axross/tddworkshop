@@ -23,6 +23,7 @@
     "gulp-filter": "^2.0.2",
     "gulp-mocha": "^2.0.0",
     "gulp-plumber": "^1.0.0",
+    "gulp-rename": "^1.2.0",
     "i": "^0.3.2",
     "intelli-espower-loader": "^0.6.0",
     "intercept-stdout": "0.0.3",
@@ -34,9 +35,11 @@
     "karma-osx-reporter": "^0.2.0",
     "karma-spec-json-reporter": "0.0.8",
     "karma-spec-reporter": "0.0.16",
+    "map-stream": "0.0.5",
     "mocha": "^2.2.1",
     "npm": "^2.7.1",
     "power-assert": "^0.10.2",
+    "vinyl": "^0.4.6",
     "vinyl-transform": "^1.0.0"
   },
   "dependencies": {
