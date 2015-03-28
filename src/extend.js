@@ -1,8 +1,17 @@
-'use strcit';
+'use strict';
 
-module.exports = function extend(target, props) {
-    for (var key in props) {
-        target[key] = props[key];
-    }
-    return target;
+var extend = function(objA, objB) {
+  var obj = {};  // returns cloned plain object from objA
+
+  Object.keys(objA).forEach(function(key) {
+    obj[key] = objA[key];
+  });
+
+  Object.keys(objB).forEach(function(key) {
+    obj[key] = objB[key];
+  });
+
+  return obj;
 };
+
+module.exports = extend;
