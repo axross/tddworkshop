@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/entry.js",
   "scripts": {
-    "test": "$(npm bin)/gulp test && $(npm bin)/gulp mocha",
+    "test": "$(npm bin)/gulp karma && $(npm bin)/gulp mocha",
     "build": "npm install && $(npm bin)/gulp compass; $(npm bin)/gulp mocha-result && $(npm bin)/gulp browserify"
   },
   "author": "Yusuke Yasuda",
