@@ -89,6 +89,24 @@ Then, open index.html.
 
 ## TDD workflow
 
+Run "gulp start-hacking". 
+
+```sh
+$ gulp start-hacking
+```
+
+This will make pre-existing application codes blank and stash them into *.answer.js files. Now you can start to implement the pedagogical app by passing tests one by one.
+
+You can choose karma or mocha, the test framework you will be working with.
+
+```sh
+$ gulp karma-tdd
+
+# OR
+
+$ gulp mocha-tdd
+```
+You can find the test code corresponding with a module in {{MODULE}}.{{FRAMEWORK}}.js file, where MODULE is module name and FRAMEWORK is karma or mocha.
 
 
 ## Known Issue
