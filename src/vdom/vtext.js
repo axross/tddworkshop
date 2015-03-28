@@ -1,9 +1,9 @@
 'use strict';
 
-var VText = function(text){
-	if (this instanceof VText === false)
-		return new VText(text);
-	this._text = (typeof text !== 'undefined') ? text:'';
+var _VText = function() {};
+
+var VText = function(text) {
+  return new _VText(text);
 };
 
 VText.prototype = {
