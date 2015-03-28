@@ -50,7 +50,7 @@ gulp.task('browser-sync', function() {
     gulp.watch("index.html").on('change', reload);
 });
 
-gulp.task('test', function (done) {
+gulp.task('karma', function (done) {
     karma.start({
         configFile: __dirname + '/karma.conf.js',
         singleRun: true
@@ -60,7 +60,7 @@ gulp.task('test', function (done) {
     });
 });
 
-gulp.task('tdd', function (done) {
+gulp.task('karma-tdd', function (done) {
     karma.start({
         configFile: __dirname + '/karma.conf.js'
     }, done);
