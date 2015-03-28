@@ -1,12 +1,14 @@
 'use strict';
 
-var _VText = function() {};
-
-var VText = function(text) {
-  return new _VText(text);
+var _VText = function(text) {
+	this._text = text || '';
 };
 
-VText.prototype = {
+var VText = function(text) {
+	return new _VText(text);
+};
+
+_VText.prototype = {
 	render:function(){
 		return this._text;
 	}
