@@ -10,6 +10,6 @@ describe('VText', function() {
 
     it('VText.empty()は空の文字列を保持するVTextである', function() {
         var empty = VText.empty();
-        expect(empty).toEqual( new VText(''));
+        expect(empty).toEqual(VText(''));
     });
 });
