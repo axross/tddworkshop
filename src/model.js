@@ -13,7 +13,7 @@ var Model = function(data) {
 Model.prototype = Object.create(EventEmitter.prototype);
 
 Model.prototype.id = function() {
-  return parseInt(this._data.id, 10) || 0;
+  return this._data.id;
 };
 
 Model.prototype.get = function(key) {
